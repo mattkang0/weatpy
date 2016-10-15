@@ -71,18 +71,15 @@ def get_arg_namespace():
     defaults = dict(cp.items('global'))
     parser = argparse.ArgumentParser(description='weatpy for weather forecast')
     parser.set_defaults(**defaults)
+    parser.add_argument('location', help='LOCATION to be queried (default "22.5333,114.1333")')
     parser.add_argument('-v', action='count')
     parser.add_argument('-b', '--backend', help='BACKEND to be used. (default "forecast.io")')
     parser.add_argument('-f', '--frontend', help='FRONTEND to be used. (default "ascii-art-table")')
     parser.add_argument('-d', '--numdays', type=int, help='NUMBER of days of weather forecast to be displayed (default 3)')
-    parser.add_argument('-l', '--location', help='LOCATION to be queried (default "22.5333,114.1333")')
     parser.add_argument('-u', '--unit', help='UNITSYSTEM to use for output. Choices are: metric, imperial, si (default "metric")')
     parser.add_argument('--api-key', help='the api KEY to use')
     parser.add_argument('--lang', help='LANGUAGE to request from forecast.io (default zh)')
     arg_namespace = parser.parse_args()
-    if len(sys.argv) == 1:  # display help message when without any arguments
-        parser.print_help()
-        exit()
     if arg_namespace.v:
         if arg_namespace.v == 1:
             init_logging(logging.INFO)
