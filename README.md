@@ -7,10 +7,10 @@
 - osx或linux系统
 - 终端为utf-8且支持256色
 - 等宽字体
-- 天气预报的API key. 前往https://developer.forecast.io/register注册.
+- 天气预报的API key. 前往 https://developer.forecast.io/register 注册.
 
 ## 安装
-pip install git+https://github.com/mattkang0/weatpy
+`pip install git+https://github.com/mattkang0/weatpy`
 
 ## 配置
 安装后会创建~/.weatpyrc配置文件, 请根据自己需求进行配置
