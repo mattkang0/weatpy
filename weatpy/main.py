@@ -5,6 +5,8 @@ import logging
 import os.path
 from logging.config import dictConfig
 
+import sys
+
 from weatpy.backends import forecast_backend
 from weatpy.frontends import aat_frontend, json_frontend
 
@@ -78,6 +80,9 @@ def get_arg_namespace():
     parser.add_argument('--api-key', help='the api KEY to use')
     parser.add_argument('--lang', help='LANGUAGE to request from forecast.io (default zh)')
     arg_namespace = parser.parse_args()
+    if len(sys.argv) == 1:  # display help message when without any arguments
+        parser.print_help()
+        exit()
     if arg_namespace.v:
         if arg_namespace.v == 1:
             init_logging(logging.INFO)
